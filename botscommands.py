@@ -89,18 +89,18 @@ class BotsCommands:
         """Fetch and send a manga chapter to the user.
 
         Validates the chapter ID, retrieves chapter data, and sends pages as a media group or single photo.
-        Chapter ID must be a 20-digit number.
+        Chapter ID must be a number.
 
         Args:
             message: The Telegram message object containing user information and chat ID.
-            value (str): The chapter ID (expected to be a 20-digit number).
+            value (str): The chapter ID (expected to be a number).
 
         Returns:
             None
         """
-        if not is_number(value) or len(value) != 20:
+        if not is_number(value):
             logger.error(f"Invalid chapter id: {value}")
-            self.bot.send_message(message.chat.id, "Invalid chapter id. It must be a 20-digit number.")
+            self.bot.send_message(message.chat.id, "Invalid chapter id. It must be a number.")
             return
 
         try:
@@ -124,18 +124,18 @@ class BotsCommands:
         """Fetch and send a manga chapter to the user as a ZIP archive.
 
         Validates the chapter ID, retrieves chapter data, and sends pages as a ZIP file.
-        Chapter ID must be a 20-digit number.
+        Chapter ID must be a number.
 
         Args:
             message: The Telegram message object containing user information and chat ID.
-            value (str): The chapter ID (expected to be a 20-digit number).
+            value (str): The chapter ID (expected to be a number).
 
         Returns:
             None
         """
-        if not is_number(value) or len(value) != 20:
+        if not is_number(value):
             logger.error(f"Invalid chapter id: {value}")
-            self.bot.send_message(message.chat.id, "Invalid chapter id. It must be a 20-digit number.")
+            self.bot.send_message(message.chat.id, "Invalid chapter id. It must be number.")
             return
 
         try:

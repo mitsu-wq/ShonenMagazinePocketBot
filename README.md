@@ -38,8 +38,8 @@ A Telegram bot for fetching manga chapters from pocket.shonenmagazine.com.
 
 ## Usage
 
-- `/get_chapter <chapter_id>`: Fetches the specified chapter and sends pages as images. The `chapter_id` must be a 20-digit number.
-- `/get_chapter_zip <chapter_id>`: Fetches the specified chapter and sends pages as a ZIP archive. The `chapter_id` must be a 20-digit number.
+- `/get_chapter <chapter_id>`: Fetches the specified chapter and sends pages as images. The `chapter_id` must be a number.
+- `/get_chapter_zip <chapter_id>`: Fetches the specified chapter and sends pages as a ZIP archive. The `chapter_id` must be a number.
 
 ## Project Structure
 
