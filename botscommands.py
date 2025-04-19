@@ -38,7 +38,7 @@ class BotsCommands:
         """
         for i in range(0, len(input_medias), 10):
             if len(input_medias) - i == 1:
-                self.bot.send_photo(chat_id, input_medias[-1].media, input_medias[-1].caption)
+                await self.bot.send_photo(chat_id, input_medias[-1].media, input_medias[-1].caption)
             else:
                 await self.bot.send_media_group(chat_id, media=input_medias[i:i+10])
 
@@ -83,7 +83,7 @@ class BotsCommands:
             input_medias = [InputMediaPhoto(media=item, caption=str(i+1), parse_mode='html') 
                             for i, item in enumerate(pages)]
             await self._send_media(chat_id, input_medias)
-            logger.info(f"Successfully sent chapter {value} with {len(input_medias)} pages")
+        logger.info(f"Successfully sent chapter {value} with {len(pages)} pages")
 
     def get_chapter(self, message, value: str):
         """Fetch and send a manga chapter to the user.

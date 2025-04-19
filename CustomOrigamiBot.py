@@ -1,7 +1,7 @@
 import io
 from origamibot import OrigamiBot
 from typing import IO, Literal, Union, List, Optional, override
-from origamibot.core.teletypes import InputMedia, Message
+from origamibot.core.teletypes import InputMedia, ReplyMarkup, Message
 from origamibot.core import api_request
 
 class CustomOrigamiBot(OrigamiBot):
@@ -66,6 +66,60 @@ class CustomOrigamiBot(OrigamiBot):
             files,
             'message'
         )
+    
+    @override
+    async def send_photo(self,
+                         chat_id: Union[int, str],
+                         photo: Union[str, io.IOBase],
+                         caption: Union[str, None] = None,
+                         parse_mode: Optional[Literal["HTML", "MarkdownV2", "Markdown"]] = None,
+                         disable_notification: Optional[bool] = None,
+                         reply_to_message_id: Optional[int] = None,
+                         reply_markup: Optional[ReplyMarkup] = None,
+                         protect_content: Optional[bool] = None
+                         ) -> Message:
+        """Use this method to send photos.
+
+        Args:
+            chat_id (Union[int, str]): Unique identifier for the target chat or username.
+            photo (Union[str, io.IOBase]): URL, file path, or file-like object containing the photo.
+            caption (Union[str, None]): Photo caption.
+            parse_mode (Optional[str]): Parse mode for the caption ("HTML", "MarkdownV2", "Markdown").
+            disable_notification (Optional[bool]): Sends the message silently if True.
+            reply_to_message_id (Optional[int]): ID of the message to reply to.
+            reply_markup (Optional[ReplyMarkup]): Additional interface options.
+            protect_content (Optional[bool]): Protects the content from forwarding and saving.
+
+        Returns:
+            Message: The sent message object.
+        """
+        data = {
+            'chat_id': chat_id,
+            'caption': caption,
+            'parse_mode': parse_mode,
+            'disable_notification': disable_notification,
+            'reply_to_message_id': reply_to_message_id,
+            'reply_markup': (reply_markup.unfold() if reply_markup is not None else None),
+            'protect_content': protect_content
+        }
+
+        if isinstance(photo, io.IOBase):
+            photo.seek(0)
+            return api_request.request(
+                self.token,
+                'sendPhoto',
+                data,
+                files={'photo': ('photo.jpg', photo, 'image/jpeg')},
+                excpect='message'
+            )
+        else:
+            data['photo'] = photo
+            return api_request.request(
+                self.token,
+                'sendPhoto',
+                data,
+                excpect='message'
+            )
     
     @override
     async def send_document(self, chat_id: Union[int, str], document: Union[str, io.BytesIO], filename: str, **kwargs) -> Message:
