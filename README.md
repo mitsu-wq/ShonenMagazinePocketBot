@@ -38,12 +38,13 @@ A Telegram bot for fetching manga chapters from pocket.shonenmagazine.com.
 
 ## Usage
 
-- Send the command `/get_chapter <chapter_id>` to the bot, where `<chapter_id>` is a 20-digit number representing the chapter ID on pocket.shonenmagazine.com.
+- `/get_chapter <chapter_id>`: Fetches the specified chapter and sends pages as images. The `chapter_id` must be a 20-digit number.
+- `/get_chapter_zip <chapter_id>`: Fetches the specified chapter and sends pages as a ZIP archive. The `chapter_id` must be a 20-digit number.
 
 ## Project Structure
 
 - `main.py`: Entry point for the bot, initializes and starts the bot.
-- `botscommands.py`: Handles bot commands (e.g., `/get_chapter`).
+- `botscommands.py`: Handles bot commands (e.g., `/get_chapter`, `/get_chapter_zip`).
 - `CustomOrigamiBot.py`: Custom bot class with improved media group sending.
 - `getchapter.py`: Fetches manga chapter data from pocket.shonenmagazine.com.
 - `utils.py`: Utility functions for text sanitization and dictionary navigation.

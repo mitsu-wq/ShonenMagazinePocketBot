@@ -1,5 +1,6 @@
+import io
 from origamibot import OrigamiBot
-from typing import Union, List, Optional, override
+from typing import IO, Literal, Union, List, Optional, override
 from origamibot.core.teletypes import InputMedia, Message
 from origamibot.core import api_request
 
@@ -65,3 +66,22 @@ class CustomOrigamiBot(OrigamiBot):
             files,
             'message'
         )
+    
+    @override
+    async def send_document(self, chat_id: Union[int, str], document: Union[str, io.BytesIO], filename: str, **kwargs) -> Message:
+        """Send a document to a chat.
+
+        Args:
+            chat_id (Union[int, str]): Unique identifier for the target chat or username.
+            document (Union[str, io.BytesIO]): Path to the file or BytesIO object.
+            **kwargs: Additional parameters for the Telegram API.
+
+        Returns:
+            Message: The sent message object.
+        """
+        if isinstance(document, io.BytesIO):
+            document.seek(0)
+            files = {'document': (f'{filename}.zip', document, 'application/zip')}
+            data = {'chat_id': chat_id, **kwargs}
+            return api_request.request(self.token, 'sendDocument', data, files, 'message')
+        return super().send_document(chat_id, document, **kwargs)
