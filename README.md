@@ -52,4 +52,4 @@ A Telegram bot for fetching manga chapters from pocket.shonenmagazine.com.
 
 ## Troubleshooting
 
-- **Event loop errors**: If you encounter asyncio-related errors (e.g., "object Message can't be used in 'await' expression"), ensure methods like `send_message` and `send_photo` are called without `await`, as they are synchronous in OrigamiBot.
+- **Event loop errors**: If you encounter asyncio-related errors (e.g., "object Message can't be used in 'await' expression"), ensure methods like `send_message` are called without `await`, as they are synchronous in OrigamiBot.
