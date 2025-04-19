@@ -6,13 +6,13 @@ import aiohttp
 from aiohttp import ClientError
 from json import JSONDecodeError
 from loguru import logger
-from utils import is_number
+from .utils import is_number
 from math import ceil
 
-from CustomOrigamiBot import CustomOrigamiBot
+from .CustomOrigamiBot import CustomOrigamiBot
 from origamibot.types import InputMediaPhoto
-from getchapter import GetChapter
-from exception import GetChapterFailed
+from .getchapter import GetChapter
+from .exception import GetChapterFailed
 
 class BotsCommands:
     """Command handler for Telegram bot to fetch manga chapters.

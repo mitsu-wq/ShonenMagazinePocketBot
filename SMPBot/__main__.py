@@ -2,8 +2,8 @@ from os import getenv, environ
 from time import sleep
 from loguru import logger
 from dotenv import load_dotenv, find_dotenv
-from CustomOrigamiBot import CustomOrigamiBot
-from botscommands import BotsCommands
+from .CustomOrigamiBot import CustomOrigamiBot
+from .botscommands import BotsCommands
 
 # 14079602755231591802
 
@@ -13,9 +13,10 @@ def main():
     Loads environment variables, validates required variables, initializes the bot,
     registers commands, and starts the bot in an infinite loop.
     """
-    environ.pop("TOKEN")
-    environ.pop("email_address")
-    environ.pop("password")
+    environ.pop("TOKEN", None)
+    environ.pop("email_address", None)
+    environ.pop("password", None)
+
     load_dotenv(dotenv_path=find_dotenv(),
                 verbose=True,
                 override=True)

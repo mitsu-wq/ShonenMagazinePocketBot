@@ -2,8 +2,8 @@ import aiohttp
 from bs4 import BeautifulSoup
 
 import json
-from exception import GetChapterFailed
-from utils import sanitize_text, ddir
+from .exception import GetChapterFailed
+from .utils import sanitize_text, ddir
 
 
 async def _GetChapter(response: aiohttp.client_reqrep.ClientResponse):

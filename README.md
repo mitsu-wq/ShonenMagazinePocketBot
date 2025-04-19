@@ -3,7 +3,7 @@ A Telegram bot for fetching manga chapters from pocket.shonenmagazine.com.
 
 ## Prerequisites
 
-- Python 3.11 or higher
+- Python 3.12 or higher
 - A Telegram bot token (obtain from BotFather)
 - (Optional) Account credentials for pocket.shonenmagazine.com (email and password)
 

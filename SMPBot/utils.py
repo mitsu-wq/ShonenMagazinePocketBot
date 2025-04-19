@@ -2,7 +2,7 @@ import re
 import itertools
 import unicodedata
 from typing import Any
-from exception import GetChapterFailed
+from .exception import GetChapterFailed
 
 CCHARS = ''.join(map(chr, itertools.chain(range(0x00,0x20), range(0x7f,0xa0))))
 CCHARS_RE = re.compile('[%s]' % re.escape(CCHARS))
