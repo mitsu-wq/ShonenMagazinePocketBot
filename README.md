@@ -5,15 +5,15 @@ A Telegram bot for fetching manga chapters from pocket.shonenmagazine.com.
 
 - Python 3.11 or higher
 - A Telegram bot token (obtain from BotFather)
-- Account credentials for pocket.shonenmagazine.com (email and password)
+- (Optional) Account credentials for pocket.shonenmagazine.com (email and password)
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/mitsu-wq/ShonenMagazinePocketBot/
+   cd ShonenMagazinePocketBot
    ```
 
 2. Install dependencies:
